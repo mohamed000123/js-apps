@@ -3,22 +3,22 @@ let productPrice = document.getElementById("price")
 let productCat = document.getElementById("category")
 let productDesc = document.getElementById("desc")
 
-productName.addEventListener("blur",function(){validation(productName.value)})    
-function validation (x){
-  let regex= /^[A-Z]/  ;     
-if (regex.test(x) == true){
-productName.classList.add("is-valid") 
-productName.classList.remove("is-invalid") 
-document.getElementById("message").classList.add("d-none")
+productName.addEventListener("blur",function(){validation(productName,/^[A-Za-z]{3,15}$/, "message" )})    
+productPrice.addEventListener("blur",function(){validation(productPrice , /^[0-9]{2,10}$/ , "message1")})   
+productCat.addEventListener("blur",function(){validation(productCat , /^[A-Za-z]{3,15}$/,"message2" )}) 
 
+function validation (input , regex , id ){ 
+if (regex.test(input.value) == true){
+input.classList.add("is-valid") 
+input.classList.remove("is-invalid") 
+document.getElementById(id).classList.add("d-none")
 }
 else{
-  productName.classList.remove("is-valid") 
-  productName.classList.add("is-invalid") 
-  document.getElementById("message").classList.remove("d-none")
+  input.classList.remove("is-valid") 
+  input.classList.add("is-invalid") 
+  document.getElementById(id).classList.remove("d-none")
 }
 }
-
 
 
 
@@ -30,10 +30,17 @@ if (localStorage.getItem("list") != null) {
 
 
 function addProduct () {
- let  product = {name:productName.value, price:productPrice.value,  cat:productCat.value, desc:productDesc.value}
-  productList.push(product)
-  localStorage.setItem("list" , JSON.stringify( productList) )
-  displayProducts(productList)
+  
+  if (productName.value && productPrice.value &&  productCat.value ){
+
+    let  product = {name:productName.value, price:productPrice.value,  cat:productCat.value, desc:productDesc.value}
+    productList.push(product)
+    localStorage.setItem("list" , JSON.stringify( productList) )
+    displayProducts(productList)
+  }
+ else {
+  document.getElementById("message3").classList.remove("d-none")
+ }
 
 }
 

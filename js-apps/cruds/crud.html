@@ -17,19 +17,21 @@
              
             <label>Product name</label>
             <input type="text" class="form-control" id="name"  > 
-            <div class="alert alert-danger d-none" id="message"> error ya 3la</div>
+            <div class="alert alert-danger d-none" id="message"> invalid input (must be only letters)</div>
 
             <label>Product Price</label>
             <input type="number" class="form-control" id="price"> 
+            <div class="alert alert-danger d-none" id="message1"> invalid input (must be numbers between 2 and 10 digits)</div>
 
             <label>Products category</label>
             <input type="text" class="form-control" id="category"> 
+            <div class="alert alert-danger d-none" id="message2"> invalid input (must be only letters)</div>
 
             <label>Product description</label>
             <textarea class="form-control" id="desc">  </textarea>
-
             <button class="btn btn-primary  p-2 mt-5" onclick="addProduct()"> add product</button>
-          
+           
+            <div class="alert alert-danger d-none" id="message3"> please fill the form </div>
        <!-- </div> -->
   </div>
 
