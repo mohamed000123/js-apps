@@ -21,7 +21,7 @@ else{
 }
 
 
-
+let updateControl= 0 ;
 let productList = []
 if (localStorage.getItem("list") != null) {
   productList=JSON.parse(localStorage.getItem("list"))
@@ -37,6 +37,7 @@ function addProduct () {
     productList.push(product)
     localStorage.setItem("list" , JSON.stringify( productList) )
     displayProducts(productList)
+
   }
  else {
   document.getElementById("message3").classList.remove("d-none")
@@ -57,6 +58,7 @@ function displayProducts (array){
 <td>${array[i].desc}</td>
  <td><button class='btn btn-secondary m-2' onclick="update(${i})"> update </button></td>
  <td> <button class='btn btn-danger m-2'  onclick="del(${i})"> delete </button></td>
+ <td> <button class='btn btn-warning m-2'  onclick="doubl(${i})"> duplicate </button></td>
 </tr>
     `
   }
@@ -74,7 +76,6 @@ function clear ( ){
 }
 
 
-
 function del (index){
    productList.splice(index,1)
    localStorage.setItem("list" , JSON.stringify( productList) )
@@ -89,9 +90,36 @@ function search () {
   if (productList[i].name.toUpperCase().includes(search.toUpperCase()) ) {
     searched.push(productList[i]) ;
     displayProducts(searched)
-  }
-     
+  }  
 }
+
+
+function doubl (i){
+  let selected = productList.slice(i,i+1) ;
+  productName.value=selected[0].name ;
+  productPrice.value=selected[0].price;
+  productDesc.value= selected[0].desc ;
+  productCat.value=selected[0].cat;
+  addProduct()
+}
+
+  function update (i){
+    let selected = productList.slice(i,i+1) ;
+    productName.value=selected[0].name ;
+    productPrice.value=selected[0].price;
+    productDesc.value= selected[0].desc ;
+    productCat.value=selected[0].cat;
+
+
+   // console.log(productList)
+   // //  let updated = {name:productName.value,  price:productPrice.value,  cat:productCat.value, desc:productDesc.value}
+   // productList.splice(i, 1 ) ;
+   //  console.log(productList)
+   // localStorage.setItem("list" , JSON.stringify( productList) )
+   // displayProducts(productList)
+   
+ }
+ 
 
 
 
