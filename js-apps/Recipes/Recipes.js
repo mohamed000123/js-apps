@@ -1,8 +1,14 @@
 let display = document.getElementById("display")
 
 let menu = ["carrot" , "broccoli",  "asparagus" ,"cauliflower" ,"corn" ,"cucumber", "green pepper","lettuce"," mushrooms" ," onion","potato"
-   ,"pumpkin" , "red pepper","pizza"
+   ,"pumpkin" , "red pepper","pizza ","tomato" , "beetroot" , "brussel sprouts" , "peas" , "zucchini" , "radish" , "sweet potato" ,"artichoke","leek"
+   ,"cabbage" , "celery" , "chili" , "garlic" ,"basil" , "coriander"
 ]
+
+
+
+
+
 
 let data = []
 
@@ -39,13 +45,16 @@ function  displayAllRecipes() {
       let myId = "'"+allRecipes[i].recipe_id+"'";
 
 
-      recipes +=` <div onclick="getRecipeDetails(${myId})"  class="col-md-4">
-         <div class="recipe">
-           <img src="${allRecipes[i].image_url}" class="w-100" alt="">
-             <h5 class="color-mine font-weight-bolder py-2">${allRecipes[i].title}</h5>
-             <p>${allRecipes[i].publisher}</p>
-           </div>
-       </div>`;
+      recipes +=`
+      <div onclick="getRecipeDetails(${myId})"  class="col-md-4 mt-4">
+
+      <div class="text">
+       <h5 class="text-info font-weight-bolder py-2">${allRecipes[i].title}</h5>
+       <p>${allRecipes[i].publisher}</p>
+      </div>
+   <img src="${allRecipes[i].image_url}" class="img-fluid  pointer" alt="">
+   </div>
+       `;
    }
 
    recipesRow.innerHTML = recipes;
@@ -68,7 +77,8 @@ async function getRecipeDetails(id)
 function showRecipeDetails(recipeDetails)
 {
    let details = ` <h4 class="color-mine py-2 font-weight-bolder">${recipeDetails.title}</h4>
-   <img src="${recipeDetails.image_url}" class="w-100">
+   
+   <img src="${recipeDetails.image_url}" class="w-100 ">
    <p class='p-2'>${recipeDetails.publisher}</p>
    <ul>`;
       for (let i = 0; i < recipeDetails.ingredients.length; i++) 

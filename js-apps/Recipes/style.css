@@ -1,0 +1,26 @@
+.pointer {
+    cursor: pointer;
+}
+
+.text{
+    height: 100px;
+
+}
+
+img{
+    width: 250px;
+    height: 250px !important;
+}
+
+.logo {
+    background-image: url("pictures/pexels-mark-mccammon-2724749.jpg");
+    height: 75vh;
+    background-size: 100% 100%;
+    opacity: 0.5;
+    text-align: center;
+
+}
+.logo h1{
+    font-weight:bolder;
+    font-size: 100px;
+}
