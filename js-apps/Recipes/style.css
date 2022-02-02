@@ -14,13 +14,20 @@ img{
 
 .logo {
     background-image: url("pictures/pexels-mark-mccammon-2724749.jpg");
-    height: 75vh;
+    height: 100vh;
     background-size: 100% 100%;
     opacity: 0.5;
     text-align: center;
-
+    position: relative;
 }
 .logo h1{
     font-weight:bolder;
     font-size: 100px;
+}
+#display{
+    position:absolute;
+    top: 75%;
+}
+#but{
+    color: white;
 }

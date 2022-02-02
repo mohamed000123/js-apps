@@ -86,12 +86,15 @@ function del (index){
 function search () {
   let search = document.getElementById("search").value
   let searched = []
-  for (let i = 0 ; i<productList.length; i++ )
-  if (productList[i].name.toUpperCase().includes(search.toUpperCase()) ) {
-    searched.push(productList[i]) ;
-    displayProducts(searched)
-  }  
-}
+  for (let i = 0 ; i<productList.length; i++ ) {
+
+    if (productList[i].name.toUpperCase().includes(search.toUpperCase()) ) {
+      searched.push(productList[i]) ;
+      displayProducts(searched)
+    }  
+  }
+  }
+
 
 
 function doubl (i){

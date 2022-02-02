@@ -13,7 +13,10 @@ let menu = ["carrot" , "broccoli",  "asparagus" ,"cauliflower" ,"corn" ,"cucumbe
 let data = []
 
 menu.map( function(dish){
-   data+=  `<button class="dropdown-item" type="button"  onclick="choose('${dish}')" >${dish}</button>`
+   data+=  `<a  href="#data">
+   <button id="but"  class="btn btn-secondary m-2"  onclick="choose('${dish}')" >${dish}</button>
+   </a>
+  `
 })
 
 display.innerHTML= data
@@ -46,14 +49,15 @@ function  displayAllRecipes() {
 
 
       recipes +=`
+     
       <div onclick="getRecipeDetails(${myId})"  class="col-md-4 mt-4">
-
-      <div class="text">
-       <h5 class="text-info font-weight-bolder py-2">${allRecipes[i].title}</h5>
+            <div class="text">
+                    <h5 class="text-info font-weight-bolder py-2">${allRecipes[i].title}</h5> 
        <p>${allRecipes[i].publisher}</p>
       </div>
-   <img src="${allRecipes[i].image_url}" class="img-fluid  pointer" alt="">
-   </div>
+      <a name="data" href="#details">  <img src="${allRecipes[i].image_url}" class="img-fluid  pointer" alt="">     </a>
+    </div>
+
        `;
    }
 
@@ -76,8 +80,8 @@ async function getRecipeDetails(id)
 
 function showRecipeDetails(recipeDetails)
 {
-   let details = ` <h4 class="color-mine py-2 font-weight-bolder">${recipeDetails.title}</h4>
-   
+   let details = ` <a name="details"><h4 class="color-mine py-2 font-weight-bolder">${recipeDetails.title}</h4>
+   <div>
    <img src="${recipeDetails.image_url}" class="w-100 ">
    <p class='p-2'>${recipeDetails.publisher}</p>
    <ul>`;
@@ -85,8 +89,25 @@ function showRecipeDetails(recipeDetails)
       {
         details +=`<li class='font-weight-bolder py-2'>${recipeDetails.ingredients[i]}</li>`;
       }
-      details += `</ul>
+      details += `</ul> </div></a>
          `;
 
          recipeDetailsDiv.innerHTML = details;
 }
+
+// function search () {
+//    let search = document.getElementById("search").value
+//    let searched = []
+//    let results =""
+//    for (let i = 0 ; i<menu.length; i++ ) {
+ 
+//      if (menu[i].toUpperCase().includes(search.trim().toUpperCase()) ) {
+//        searched.push(menu[i]) ;
+//      }  
+//    }
+//    for (let i = 0 ; i<searched.length; i++ ) {
+//       results += `<h5 >${searched[i]}</h5>`
+//    }
+//    document.getElementById("results").innerHTML=results
+//    console.log(results)
+// }
